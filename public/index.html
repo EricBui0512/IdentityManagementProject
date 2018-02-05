@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/libs/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/libs/font-awesome/css/font-awesome.min.css">
+
+    <!-- Custom Theme Style -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/custom.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/app.bundle.css">
+    <!--<link rel="stylesheet" href="%PUBLIC_URL%/css/foundation.min.css">-->
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>NEXT ID</title>
+
+  </head>
+  <body>
+    <noscript>
+      <!--You need to enable JavaScript to run this app.-->
+    </noscript>
+    <div id="root">
+      <div id="floatBarsG">
+        <div id="floatBarsG_1" class="floatBarsG"></div>
+        <div id="floatBarsG_2" class="floatBarsG"></div>
+        <div id="floatBarsG_3" class="floatBarsG"></div>
+        <div id="floatBarsG_4" class="floatBarsG"></div>
+        <div id="floatBarsG_5" class="floatBarsG"></div>
+        <div id="floatBarsG_6" class="floatBarsG"></div>
+        <div id="floatBarsG_7" class="floatBarsG"></div>
+        <div id="floatBarsG_8" class="floatBarsG"></div>
+      </div>
+    </div>
+    <script src="%PUBLIC_URL%/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/jquery-1.12.0.min.js">\x3C/script>')</script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
+
+    <script src="%PUBLIC_URL%/libs/foundation/6.1.2/foundation.min.js"  crossorigin="anonymous"></script>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <!-- <script src="%PUBLIC_URL%/lib/client.min.js"></script> -->
+    <script>
+        $(document).ready(function(){
+            $(document).on( 'click', '.toggleMenu', function () {
+                var isOpen = $( ".menuBar" ).hasClass( "openMenu" );
+                if (!isOpen) {
+                    $(".menuBar").addClass("openMenu");
+                    $(".menuBar").removeClass("closeMenu");
+                    $(".right-col").removeClass("w100p");
+                } else {
+                    $(".menuBar").removeClass("openMenu");
+                    $(".menuBar").addClass("closeMenu");
+                    $(".right-col").addClass("w100p");
+                }
+            });
+            $(document).on( 'click', '.openSearch', function () {
+                $('.inputSearch').val("");
+                $(".custom-search").addClass("visible");
+                $(".custom-search").removeClass("invisible");
+                setTimeout(function(){
+                    $('.inputSearch').focus();
+                }, 10);
+            });
+            $(document).on( 'click', '.close-search', function () {
+                $(".custom-search").addClass("invisible");
+                $(".custom-search").removeClass("visible");
+            });
+            $(document).on( 'click', '.nav.side-menu > li > a', function () {
+                windowsize = $(window).width();
+                $(".vh100").css("height", "100vh");
+                if (windowsize < 992) {
+                    var isOpen = $( ".menuBar" ).hasClass( "openMenu" );
+                    if (isOpen) {
+                        setTimeout(function(){
+                            $(".menuBar").removeClass("openMenu");
+                            $(".menuBar").addClass("closeMenu");
+                            $(".right-col").addClass("w100p");
+                        }, 10);
+                    }
+                }
+                setTimeout(function(){
+                    var height = $(document).height();
+                    $(".vh100").css("height", height);
+                }, 100);
+            });
+            $(window).resize(function (){
+                windowsize = $(window).width();
+                if (windowsize < 992) {
+                    var isOpen = $( ".menuBar" ).hasClass( "openMenu" );
+                    if (isOpen) {
+                        setTimeout(function(){
+                            $(".menuBar").removeClass("openMenu");
+                            $(".menuBar").addClass("closeMenu");
+                            $(".right-col").addClass("w100p");
+                        }, 10);
+                    }
+                }
+            });
+            setTimeout(function(){
+                var height = $(document).height();
+                $(".vh100").css("height", height);
+                windowsize = $(window).width();
+                if (windowsize < 992) {
+                    var isOpen = $( ".menuBar" ).hasClass( "openMenu" );
+                    if (isOpen) {
+                        $(".menuBar").removeClass("openMenu");
+                        $(".menuBar").addClass("closeMenu");
+                        $(".right-col").addClass("w100p");
+                    }
+                }
+            }, 10);
+        });
+    </script>
+  </body>
+</html>
