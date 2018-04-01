@@ -6,6 +6,13 @@ export const METAMASK = "Using An Existing Account";
 export const IMPORT_ACCOUNT = "Import Account";
 export const VERIFY = "You Are Going To Invite Someone To Verify Your Data";
 export const SHARE_DATA = "You Are Going To Share Your Data";
+export const UPDATE_USER_PROFILE = "Update User Profile";
+export const INSUFFICIENT_FUNDS = "Insufficient funds";
+export const ADD_FIELD = "Add field to facet";
+export const EDIT_FIELD = "Edit Facet Field";
+export const DELETE_FIELD = "Delete Facet Field";
+export const ADD_FACET = "You Are Going To Add New Facet";
+export const CONFIRM_TRANSACTION = "Confirm Transaction";
 
 /// type
 export const MODAL_OWNER_LOGIN = 1;
@@ -16,3 +23,10 @@ export const MODAL_METAMASK = 5;
 export const MODAL_IMPORT_ACCOUNT = 6;
 export const MODAL_SHARE_DATA = 7;
 export const MODAL_VERIFY = 8;
+export const MODAL_UPDATE_USER_PROFILE = 9;
+export const MODAL_INSUFFICIENT_FUNDS = 10;
+export const MODAL_ADD_FIELD = 11;
+export const MODAL_ADD_FACET = 12;
+export const MODAL_CONFIRM_TRANSACTION = 13;
+export const MODAL_EDIT_FIELD = 14;
+export const MODAL_DELETE_FIELD = 15;

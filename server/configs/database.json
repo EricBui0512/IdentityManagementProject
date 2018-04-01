@@ -1,8 +1,8 @@
 {
     "development": {
         "username": "root",
-        "password": "123",
-        "database": "nextId",
+        "password": "",
+        "database": "next_id",
         "host": "127.0.0.1",
         "dialect": "mysql"
     },

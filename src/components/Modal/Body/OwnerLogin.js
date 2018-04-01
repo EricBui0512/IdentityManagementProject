@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RaisedButton from "material-ui/RaisedButton";
+import {connect} from 'react-redux';
 import {
     MODAL_CREATE_ACCOUNT,
     MODAL_EXISTING,
@@ -9,7 +10,7 @@ class OwnerLogin extends Component {
         return (
             <div className="mh250 pd10">
                 <div className="intro-popup-top">
-                    <h4 className="text-center">Ehereum network: <b>Rinkeby</b></h4>
+                    <h4 className="text-center">Ehereum network: <b>{this.props.global.nodeName}</b></h4>
                     <h4 className="text-center">You need an ethereum accounts to use the application</h4>
                 </div>
 
@@ -31,4 +32,8 @@ class OwnerLogin extends Component {
         );
     }
 }
-export default OwnerLogin;
+const mapStateToProps = state => ({
+    global: state.global,
+});
+
+export default connect(mapStateToProps)(OwnerLogin);

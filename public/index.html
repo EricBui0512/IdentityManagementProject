@@ -33,7 +33,10 @@
     <title>NEXT ID</title>
 
   </head>
-  <body>
+  <body class="relative">
+      <div class="absolute-body flexible">
+          <div class="loader"></div>
+      </div>
     <noscript>
       <!--You need to enable JavaScript to run this app.-->
     </noscript>
@@ -50,6 +53,7 @@
       </div>
     </div>
     <script src="%PUBLIC_URL%/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="%PUBLIC_URL%/libs/animation.js"></script>
     <script>window.jQuery || document.write('<script src="/assets/jquery-1.12.0.min.js">\x3C/script>')</script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
 
@@ -65,77 +69,6 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <!-- <script src="%PUBLIC_URL%/lib/client.min.js"></script> -->
-    <script>
-        $(document).ready(function(){
-            $(document).on( 'click', '.toggleMenu', function () {
-                var isOpen = $( ".menuBar" ).hasClass( "openMenu" );
-                if (!isOpen) {
-                    $(".menuBar").addClass("openMenu");
-                    $(".menuBar").removeClass("closeMenu");
-                    $(".right-col").removeClass("w100p");
-                } else {
-                    $(".menuBar").removeClass("openMenu");
-                    $(".menuBar").addClass("closeMenu");
-                    $(".right-col").addClass("w100p");
-                }
-            });
-            $(document).on( 'click', '.openSearch', function () {
-                $('.inputSearch').val("");
-                $(".custom-search").addClass("visible");
-                $(".custom-search").removeClass("invisible");
-                setTimeout(function(){
-                    $('.inputSearch').focus();
-                }, 10);
-            });
-            $(document).on( 'click', '.close-search', function () {
-                $(".custom-search").addClass("invisible");
-                $(".custom-search").removeClass("visible");
-            });
-            $(document).on( 'click', '.nav.side-menu > li > a', function () {
-                windowsize = $(window).width();
-                $(".vh100").css("height", "100vh");
-                if (windowsize < 992) {
-                    var isOpen = $( ".menuBar" ).hasClass( "openMenu" );
-                    if (isOpen) {
-                        setTimeout(function(){
-                            $(".menuBar").removeClass("openMenu");
-                            $(".menuBar").addClass("closeMenu");
-                            $(".right-col").addClass("w100p");
-                        }, 10);
-                    }
-                }
-                setTimeout(function(){
-                    var height = $(document).height();
-                    $(".vh100").css("height", height);
-                }, 100);
-            });
-            $(window).resize(function (){
-                windowsize = $(window).width();
-                if (windowsize < 992) {
-                    var isOpen = $( ".menuBar" ).hasClass( "openMenu" );
-                    if (isOpen) {
-                        setTimeout(function(){
-                            $(".menuBar").removeClass("openMenu");
-                            $(".menuBar").addClass("closeMenu");
-                            $(".right-col").addClass("w100p");
-                        }, 10);
-                    }
-                }
-            });
-            setTimeout(function(){
-                var height = $(document).height();
-                $(".vh100").css("height", height);
-                windowsize = $(window).width();
-                if (windowsize < 992) {
-                    var isOpen = $( ".menuBar" ).hasClass( "openMenu" );
-                    if (isOpen) {
-                        $(".menuBar").removeClass("openMenu");
-                        $(".menuBar").addClass("closeMenu");
-                        $(".right-col").addClass("w100p");
-                    }
-                }
-            }, 10);
-        });
-    </script>
+
   </body>
 </html>

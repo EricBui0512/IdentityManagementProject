@@ -1,45 +1,69 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+# NextId Demo
+NextId web  helps users to interact directly with NextIdNetwork in order to create/retreive user profile, create/update personal data.
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+## Live deployment
+We deployed the Testnet version of the project at [http://demo.nextid.com/](http://demo.nextid.com/). 
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+## Project Structure
+1. Server :  ExpressJs + MySQL in ./server folder
+2. Front-end webapp: This webapp is using `Reactjs` and `Redux-sagas` and following their naming conventions. Source code of the webapp frontend is in `src`
 
----
+## Install dependencies
+The wallet is developed on `Nodejs`, we assume users have it installed in their environment. *We suggest to use Node v8.0.0*
+```
+npm install
+```
+to install depedencies in server side
+```
+cd ./server 
+npm install
+```
 
-## Edit a file
+# Config hostname and ports
+In order to run project in development mode:
+- Set reactjs proxy in package.json: 
+ "proxy": "http://localhost:4000/" 
+ 
+- In folder src/services/constants.js
+const REMOTE_API_HOST = 'http://localhost:4000'
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+- In folder server/config/app.json
+ API_HOST_URL:'http://localhost:4000'
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+In order to run project in production mode:
+- In folder src/services/constants.js
+const REMOTE_API_HOST = 'http://<hostname>:<port>'
 
----
+- In folder server/config/app.json
+API_HOST_URL:'http://<hostname>:<port>'
 
-## Create a file
+If port is 80. Don't the URL should be 'http://hostname'
 
-Next, you’ll add a new file to this repository.
+Before run in production mode.
+type `npm start build` at root folder to do bundling javascripts, stylesheets.
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+After bundling the source code, go to ./server folder then type: `npm start` to run to do testing at port 4000. In production/live server please use PM2 to run this web application
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
 
----
+## Run in development mode (rinkeby chain)
+```
+npm run dev
+```
+Once it is running, user can access to the web app by going to `http://localhost:3000`
 
-## Clone a repository
+To run the api in server side:
+```
+cd ./server
+npm start
+```
+Once it is running, user can access to the api by going to `http://localhost:4000`
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+Please make sure that the react webapp has a proxy which point to `http://localhost:4000`
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+# Import Database structure
+Please import initial-db.mysql in folder server/initial-db.sql to mysql server before run the server.
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+## Bundle webapp assets
+```
+npm run build
+```

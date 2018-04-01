@@ -1,24 +1,25 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const port = 4000;
-const path = require('path')
+const path = require("path");
 
 
-app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.json({limit:"50mb"}));       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: false
+    extended: false,
+    limit:"50mb"
 }));
 
-app.use(express.static(path.join(__dirname, '../build')));
-app.use(express.static(path.join(__dirname, './upload')));
+app.use(express.static(path.join(__dirname, "../build")));
+app.use(express.static(path.join(__dirname, "./upload")));
 
-const routes = require("./routes")(app);
+require("./routes")(app);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', './build', 'index.html'));
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "..", "./build", "index.html"));
 });
 
 app.listen(port, function () {
-  console.log('Next Id backend listening on port ' + port + '!');
-})
+    // console.log("Next Id backend listening on port " + port + "!");
+});

@@ -10,6 +10,7 @@ import history from "./history"
 import { routerMiddleware } from 'react-router-redux'
 
 import rootSaga from './sagas'
+import reduxReset from 'redux-reset'
 
 
 const routeMiddleware = routerMiddleware(history)
@@ -24,11 +25,12 @@ const middleware = applyMiddleware(
 )
 
 const store = createStore(
-  reducer, undefined, compose(middleware, autoRehydrate()))
+  reducer, undefined, compose(middleware,  reduxReset(), autoRehydrate(), window.devToolsExtension ? window.devToolsExtension() : f => f))
 
 sagaMiddleware.run(rootSaga)
 
 persistStore(store, {blacklist: [
+  'AppReducer',
   'connection',
   'exchangeForm',
   'paymentForm',

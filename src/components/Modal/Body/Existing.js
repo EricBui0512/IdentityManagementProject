@@ -4,7 +4,7 @@ import {
     MODAL_METAMASK,
     MODAL_IMPORT_ACCOUNT
 } from "../constants";
-class Existing extends Component {
+class Existing extends Component {    
     render() {
         return (
             <div className="mh250 pd10">

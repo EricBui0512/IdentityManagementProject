@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
-import Navigation from './components/Navigation';
-import SideBar from './components/SideBar';
-import CreateProject from  './components/home/CreateProject';
+import { connect } from 'react-redux'
+import MainElement from './routes/index'
 
 class App extends Component {
-  render() {
-    return (
-        <div className="main_container">
-            <div className="col-md-3 left_col menu_fixed">
-                <div className="left_col scroll-view">
-                    <div className="navbar nav_title">
-                        <a href={this.props.url} className="site_title"></a>
-                    </div>
-                    <div className="clearfix"></div>
-                    <SideBar/>
-                </div>
-            </div>
-            <Navigation/>
-            <CreateProject/>
-        </div>
-    );
-  }
+    // componentWillMount() {
+    //     if (this.props.ethereumNode){
+    //         this.props.ethereumNode.watch()
+    //         console.log("123")
+    //     }        
+    // }
+    componentWillReceiveProps(props){
+        if (this.props.ethereumNode){
+            this.props.ethereumNode.watch()
+        }  
+    }
+    render() {
+        return (
+            <MainElement/>
+        );
+    }
 }
 
-export default App;
+const mapStateToProps = state => ({
+    ethereumNode: state.connection.ethereum,
+    currentBlock: state.global.currentBlock,
+    connected: state.global.connected,
+});
+
+export default connect(mapStateToProps)(App);
+
